@@ -7,6 +7,8 @@ description: GitHub Actionsワークフローの失敗をデバッグする手�
 
 GitHub Actionsのワークフロー失敗時の体系的なデバッグ手順を提供します。
 
+> **Note:** このスキルではGitHub MCP Serverのツール（`list_workflow_runs`, `summarize_job_log_failures`, `get_job_logs`など）を使用します。
+
 ## デバッグ手順
 
 ### 1. ワークフロー実行状況の確認
