@@ -25,8 +25,9 @@ GitHub Copilot Agentで使用できる各種設定の説明と設定例を管理
 - GitHub Copilot Agent（コーディングエージェント）
 - GitHub Copilot CLI
 
-## 設定ファイル
+## ドキュメント
 
+- [設定の使い分けガイド](./docs/usage-guide.md) - どの設定をいつ使うべきか
 - [カスタム指示の設定](./docs/custom-instructions.md)
 - [カスタムエージェントの設定](./docs/custom-agents.md)
 - [エージェントスキルの設定](./docs/agent-skills.md)
