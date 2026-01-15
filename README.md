@@ -1,10 +1,10 @@
 # coding-agent-settings
 
-GitHub Copilot Agentで使用できる各種設定の説明と設定例を管理します。
+GitHub Copilot Coding Agentで使用できる各種設定の説明と設定例を管理します。
 
 ## 前提条件
 
-このリポジトリで扱う設定は、**GitHub Copilot Agent**（コーディングエージェント）で作用する設定のみを対象としています。
+このリポジトリで扱う設定は、**GitHub Copilot Coding Agent**（コーディングエージェント）で作用する設定のみを対象としています。
 
 ### 対象となる設定
 
@@ -22,7 +22,7 @@ GitHub Copilot Agentで使用できる各種設定の説明と設定例を管理
 本リポジトリの設定は以下の環境で利用できます：
 
 - GitHub Copilot Pro / Pro+ / Business / Enterprise
-- GitHub Copilot Agent（コーディングエージェント）
+- GitHub Copilot Coding Agent（コーディングエージェント）
 - GitHub Copilot CLI
 
 ## ドキュメント

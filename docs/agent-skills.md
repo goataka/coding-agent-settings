@@ -1,5 +1,9 @@
 # エージェントスキル（Agent Skills）
 
+**公式ドキュメント:**
+- [エージェントスキルについて（日本語）](https://docs.github.com/ja/copilot/concepts/agents/about-agent-skills)
+- [エージェントスキルについて（英語）](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+
 ## 概要
 
 エージェントスキルは、特定の業務フローやタスクを実行するための手順書をCopilotに提供する機能です。定型的な作業手順やドメイン固有の知識を「スキル」として定義することで、Copilotがより効率的にタスクを実行できるようになります。
@@ -194,8 +198,6 @@ npm run migration:revert
 - [Anthropic Skills Collection](https://github.com/anthropics/skills)
 - [GitHub Awesome Copilot](https://github.com/github/awesome-copilot)
 
-## 参考資料
+## その他の参考資料
 
-- [エージェントスキルについて（日本語）](https://docs.github.com/ja/copilot/concepts/agents/about-agent-skills)
-- [エージェントスキルについて（英語）](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
 - [VS Code でのエージェントスキル利用](https://code.visualstudio.com/docs/copilot/customization/agent-skills)

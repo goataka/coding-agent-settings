@@ -1,5 +1,8 @@
 # カスタムエージェント（Custom Agents）
 
+**公式ドキュメント:**
+- [カスタムエージェント設定リファレンス（日本語）](https://docs.github.com/ja/copilot/reference/custom-agents-configuration)
+
 ## 概要
 
 カスタムエージェントは、特定のタスクや役割に特化したAIアシスタントをリポジトリ単位で定義できる機能です。テスト担当、設計担当、ドキュメント担当など、専門性を持ったエージェントを作成できます。
@@ -147,7 +150,6 @@ infer: true
 - **制約の明示**: やってはいけないことも記述する
 - **実例を含める**: 期待する出力例を示すと効果的
 
-## 参考資料
+## その他の参考資料
 
-- [カスタムエージェント設定リファレンス（日本語）](https://docs.github.com/ja/copilot/reference/custom-agents-configuration)
 - [カスタムエージェント設定リファレンス（英語）](https://docs.github.com/en/copilot/reference/custom-agents-configuration)

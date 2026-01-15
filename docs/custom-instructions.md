@@ -1,5 +1,8 @@
 # カスタム指示（Custom Instructions）
 
+**公式ドキュメント:**
+- [GitHub Copilot リポジトリカスタム指示の追加](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
+
 ## 概要
 
 カスタム指示は、プロジェクト固有のコーディング規約や設計方針をGitHub Copilotに認識させるための設定です。技術スタック、命名規則、エラー処理の方針などを記述することで、Copilotの提案精度と一貫性が向上します。
@@ -83,7 +86,6 @@ applyTo: "src/backend/**"
 - **階層化**: 大規模プロジェクトでは複数ファイルに分割して管理
 - **更新を継続**: プロジェクトの変更に合わせて定期的に見直す
 
-## 参考資料
+## その他の参考資料
 
-- [GitHub Copilot リポジトリカスタム指示の追加](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
 - [カスタム指示について（英語）](https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions)
