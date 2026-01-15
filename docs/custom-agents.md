@@ -1,7 +1,6 @@
 # カスタムエージェント（Custom Agents）
 
-**公式ドキュメント:**
-- [カスタムエージェント設定リファレンス（日本語）](https://docs.github.com/ja/copilot/reference/custom-agents-configuration)
+[カスタムエージェント設定リファレンス - GitHub Docs](https://docs.github.com/ja/copilot/reference/custom-agents-configuration)
 
 ## 概要
 
@@ -38,84 +37,13 @@ infer: true または false（自動選択の有無）
 
 ## 設定例
 
+このリポジトリには実際の設定例が含まれています：
+
 ### テスト専門エージェント
 
-```markdown
----
-name: test-specialist
-description: テストコードの作成とテストカバレッジの向上に特化したエージェント
-tools: ["read", "edit", "search"]
-infer: true
----
+テストコードの作成、品質レビュー、カバレッジ向上に特化したエージェントです。
 
-# テスト専門エージェント
-
-あなたはテスト品質の向上に特化したエージェントです。
-
-## 担当範囲
-- 既存テストの分析とカバレッジギャップの特定
-- 単体テスト、統合テスト、E2Eテストの作成
-- テストコードの品質レビューと改善提案
-- テストの独立性と決定性の確保
-
-## 基本方針
-- プロダクションコードは変更しない（明示的に要求された場合を除く）
-- テストには明確な説明を含める
-- 言語とフレームワークに適したテストパターンを使用
-```
-
-### バックエンドAPI専門エージェント
-
-```markdown
----
-name: backend-api-specialist
-description: バックエンドAPI開発とデータベース設計に特化したエージェント
-tools: ["read", "edit", "search", "shell"]
-infer: true
----
-
-# バックエンドAPI専門エージェント
-
-あなたはバックエンドAPI開発の専門家です。
-
-## 専門分野
-- RESTful / GraphQL APIの設計と実装
-- データベーススキーマ設計と最適化
-- 認証・認可の実装
-- パフォーマンス最適化
-
-## 開発方針
-- API設計はOpenAPI仕様に準拠
-- データベースマイグレーションは必ず作成
-- エンドポイントには適切なバリデーションを実装
-- レスポンスタイムは200ms以内を目標とする
-```
-
-### 実装計画エージェント
-
-```markdown
----
-name: implementation-planner
-description: 詳細な実装計画と技術仕様書の作成に特化したエージェント
-tools: ["read", "search", "edit"]
-infer: true
----
-
-# 実装計画エージェント
-
-あなたは技術仕様書と実装計画の作成専門家です。
-
-## 担当業務
-- 要件の分析と実行可能なタスクへの分解
-- 詳細な技術仕様書の作成
-- 依存関係を明確にした実装計画の生成
-- アーキテクチャ図とシーケンス図の作成
-
-## 成果物
-- 実装手順が明確なマークダウン形式の計画書
-- 技術的な制約とトレードオフの文書化
-- 見積もり工数とリスクの明示
-```
+📄 [.github/agents/test-specialist.agent.md](../.github/agents/test-specialist.agent.md)
 
 ## プロパティ説明
 

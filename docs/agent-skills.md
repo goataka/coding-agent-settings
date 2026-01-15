@@ -1,8 +1,6 @@
 # エージェントスキル（Agent Skills）
 
-**公式ドキュメント:**
-- [エージェントスキルについて（日本語）](https://docs.github.com/ja/copilot/concepts/agents/about-agent-skills)
-- [エージェントスキルについて（英語）](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+[エージェントスキルについて - GitHub Docs](https://docs.github.com/ja/copilot/concepts/agents/about-agent-skills)
 
 ## 概要
 
@@ -12,21 +10,14 @@
 
 ### ファイルの配置
 
-#### プロジェクトスキル（リポジトリ単位）
+プロジェクトスキルは `.github/skills/` ディレクトリに配置します。
+
 ```
 .github/
 └── skills/
     ├── webapp-testing/
     │   └── SKILL.md
     └── github-actions-debugging/
-        └── SKILL.md
-```
-
-#### パーソナルスキル（個人単位）
-```
-~/.copilot/
-└── skills/
-    └── custom-workflow/
         └── SKILL.md
 ```
 
@@ -46,130 +37,25 @@ license: ライセンス情報（オプショナル）
 
 ## 設定例
 
+このリポジトリには実際の設定例が含まれています：
+
 ### GitHub Actions障害デバッグスキル
 
-```markdown
----
-name: github-actions-failure-debugging
-description: GitHub Actionsのワークフロー失敗時のデバッグ手順。ワークフローのデバッグを依頼された際に使用
----
+CI/CDパイプラインの失敗を体系的にデバッグする手順を提供します。
 
-# GitHub Actions障害デバッグスキル
-
-GitHub Actionsのワークフロー失敗時のデバッグ手順です。
-
-## デバッグ手順
-
-1. `list_workflow_runs` ツールを使用して、最近のワークフロー実行状況を確認
-2. `summarize_job_log_failures` ツールでエラーログの要約を取得し、問題箇所を特定
-3. 詳細が必要な場合は `get_job_logs` または `get_workflow_run_logs` で完全なログを取得
-4. 自分の環境でエラーを再現
-5. 修正を実施し、コミット前に動作確認
-
-## 注意事項
-
-- ログは大量になる可能性があるため、要約から始めること
-- 複数のジョブが失敗している場合は並行して調査
-```
+📄 [.github/skills/github-actions-debugging/SKILL.md](../.github/skills/github-actions-debugging/SKILL.md)
 
 ### Webアプリケーションテストスキル
 
-```markdown
----
-name: webapp-testing
-description: Webアプリケーションのテスト実施手順。E2Eテストの作成や実行を依頼された際に使用
----
+Webアプリケーションのテスト作成と実行の標準手順を定義します。
 
-# Webアプリケーションテストスキル
-
-## テスト準備
-
-1. テスト対象の機能仕様を確認
-2. テストケースの洗い出し（正常系・異常系）
-3. テストデータの準備
-
-## テスト実装手順
-
-### 単体テスト
-- コンポーネントは独立してテスト
-- モックやスタブを活用
-- エッジケースも含める
-
-### 統合テスト
-- APIとの連携を確認
-- データフローを検証
-- エラーハンドリングをテスト
-
-### E2Eテスト
-- ユーザーシナリオに基づいて実施
-- 主要な業務フローを網羅
-- ブラウザ互換性を考慮
-
-## テスト実行
-
-```bash
-# 単体テスト実行
-npm run test:unit
-
-# 統合テスト実行
-npm run test:integration
-
-# E2Eテスト実行
-npm run test:e2e
-```
-
-## カバレッジ確認
-
-テストカバレッジは最低80%を目標とする。
-```
+📄 [.github/skills/webapp-testing/SKILL.md](../.github/skills/webapp-testing/SKILL.md)
 
 ### データベースマイグレーションスキル
 
-```markdown
----
-name: database-migration
-description: データベーススキーマ変更とマイグレーション手順。DB変更を依頼された際に使用
----
+データベーススキーマ変更時の安全なマイグレーション手順を提供します。
 
-# データベースマイグレーションスキル
-
-## マイグレーション作成手順
-
-1. 変更内容の設計と影響範囲の確認
-2. マイグレーションファイルの作成
-3. ロールバック用のダウンマイグレーションも作成
-4. 開発環境でテスト実行
-
-## 実装ガイドライン
-
-### テーブル作成
-- 主キーは必ず定義
-- インデックスは適切に設定
-- 外部キー制約を活用
-
-### カラム変更
-- NULL制約の追加は既存データを確認
-- デフォルト値を適切に設定
-- データ型変更は慎重に
-
-### データ移行
-- 大量データの場合はバッチ処理
-- トランザクション管理を徹底
-- バックアップを必ず取得
-
-## 実行コマンド
-
-```bash
-# マイグレーション作成
-npm run migration:create -- [マイグレーション名]
-
-# マイグレーション実行
-npm run migration:run
-
-# ロールバック
-npm run migration:revert
-```
-```
+📄 [.github/skills/database-migration/SKILL.md](../.github/skills/database-migration/SKILL.md)
 
 ## スキルとカスタム指示の使い分け
 

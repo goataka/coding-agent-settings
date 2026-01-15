@@ -1,7 +1,6 @@
 # カスタム指示（Custom Instructions）
 
-**公式ドキュメント:**
-- [GitHub Copilot リポジトリカスタム指示の追加](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
+[GitHub Copilot リポジトリカスタム指示の追加 - GitHub Docs](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
 
 ## 概要
 
@@ -19,65 +18,27 @@
 
 複数のルールを細かく管理する場合は、`.github/instructions/` 配下に `[任意名].instructions.md` ファイルを作成し、YAMLフロントマターで適用パターンを指定します。
 
-```markdown
----
-applyTo: "src/backend/**"
----
-# バックエンド開発ルール
-モデルクラスには必ずバリデーションを定義してください。
-```
-
 ## 設定例
+
+このリポジトリには実際の設定例が含まれています：
 
 ### 基本的なカスタム指示
 
-```markdown
-# 技術スタック
-- Python 3.11
-- FastAPI
-- PostgreSQL
+TypeScript/React/Next.jsプロジェクト向けの基本設定です。
 
-# 命名規則
-- 関数名: snake_case
-- クラス名: PascalCase
-- 定数: UPPER_SNAKE_CASE
+📄 [.github/copilot-instructions.md](../.github/copilot-instructions.md)
 
-# コーディング規約
-- 型ヒントを必ず使用する
-- docstringはGoogle形式で記述する
-- 1行の長さは最大88文字とする
+### 拡張子固有の指示
 
-# エラーハンドリング
-- カスタム例外は `utils/exceptions.py` で定義する
-- API例外は必ず適切なHTTPステータスコードを返す
+特定のファイルタイプに対してのみ適用されるルールを定義できます。
 
-# テスト方針
-- 単体テストはpytestを使用する
-- テストカバレッジは80%以上を維持する
-```
+#### Python固有のルール
 
-### TypeScriptプロジェクトの例
+📄 [.github/instructions/python.instructions.md](../.github/instructions/python.instructions.md)
 
-```markdown
-# 技術スタック
-- TypeScript 5.x
-- React 18
-- Next.js 14
+#### TypeScript固有のルール
 
-# 命名規則
-- 関数・変数: camelCase
-- コンポーネント・型・インターフェース: PascalCase
-- 定数: UPPER_SNAKE_CASE
-
-# 設計方針
-- クリーンアーキテクチャを採用
-- ビジネスロジックとUIを分離
-- 依存性注入を活用
-
-# エラー処理
-- Result型パターンを使用（Either型でも可）
-- try-catchは最小限に留める
-```
+📄 [.github/instructions/typescript.instructions.md](../.github/instructions/typescript.instructions.md)
 
 ## ベストプラクティス
 
