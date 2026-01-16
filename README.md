@@ -36,11 +36,20 @@ GitHub Copilot Coding Agentで使用できる各種設定の説明と設定例�
 
 このリポジトリ自体にGitHub Copilot Coding Agentの設定例が含まれています：
 
+### AIモデル固有の指示
+
+- [AGENTS.md](./AGENTS.md) - プロジェクト全体のエージェント設定（ルート）
+- [CLAUDE.md](./CLAUDE.md) - Claude専用の指示
+- [GEMINI.md](./GEMINI.md) - Gemini専用の指示
+- [frontend/AGENTS.md](./frontend/AGENTS.md) - フロントエンド配下で優先される設定
+- [backend/AGENTS.md](./backend/AGENTS.md) - バックエンド配下で優先される設定
+
 ### カスタム指示
 
 - [.github/copilot-instructions.md](./.github/copilot-instructions.md) - プロジェクト全体の基本設定
-- [.github/instructions/python.instructions.md](./.github/instructions/python.instructions.md) - Python固有のルール
+- [.github/instructions/shell.instructions.md](./.github/instructions/shell.instructions.md) - シェルスクリプト固有のルール
 - [.github/instructions/typescript.instructions.md](./.github/instructions/typescript.instructions.md) - TypeScript固有のルール
+- [.github/instructions/validation-file.instructions.md](./.github/instructions/validation-file.instructions.md) - 単一ファイル用の例
 
 ### カスタムエージェント
 

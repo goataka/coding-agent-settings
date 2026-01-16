@@ -1,21 +1,43 @@
 # 設定の使い分けガイド
 
-GitHub Copilot Agentには3つの主要な設定方法があります。それぞれの特徴と使い分けを理解することで、効果的にCopilotをカスタマイズできます。
+GitHub Copilot Coding Agentには複数の設定方法があります。それぞれの特徴と使い分けを理解することで、効果的にCopilotをカスタマイズできます。
 
 ## 設定の比較
 
-| 項目 | カスタム指示 | カスタムエージェント | エージェントスキル |
-|------|------------|-------------------|------------------|
-| **配置場所** | `.github/copilot-instructions.md` | `.github/agents/*.agent.md` | `.github/skills/*/SKILL.md` |
-| **適用範囲** | リポジトリ全体 | タスク・役割ごと | 特定の作業フローごと |
-| **適用タイミング** | 常時 | エージェント選択時 | 関連タスク実行時 |
-| **主な用途** | コーディング規約、設計方針 | 専門的なタスク処理 | 定型業務フロー |
+設定はスコープの広いものから狭いものへと並んでいます：
+
+| 設定タイプ | AGENTS.md / CLAUDE.md / GEMINI.md | カスタム指示（リポジトリ全体） | カスタム指示（パス固有） | カスタム指示（単一ファイル） | カスタムエージェント | エージェントスキル |
+|----------|----------------------------------|------------------------|-------------------|----------------------|----------------|---------------|
+| **配置場所** | ルートまたはディレクトリ内 | `.github/copilot-instructions.md` | `.github/instructions/*.instructions.md` | `.github/instructions/*.instructions.md` | `.github/agents/*.agent.md` | `.github/skills/*/SKILL.md` |
+| **適用範囲** | 最寄りのファイルから下位全体 | リポジトリ全体 | 指定パス配下 | 特定ファイルのみ | タスク・役割ごと | 特定の作業フローごと |
+| **適用タイミング** | 常時（最寄り優先） | 常時 | 常時（該当ファイル時） | 常時（該当ファイル時） | エージェント選択時 | 関連タスク実行時 |
+| **主な用途** | AIモデル固有の指示 | プロジェクト共通ルール | ディレクトリやファイルタイプ別ルール | 特定ファイル専用ルール | 専門的なタスク処理 | 定型業務フロー |
 
 ## 具体的な使い分け
 
-### カスタム指示を使うべき場合
+### AGENTS.md / CLAUDE.md / GEMINI.md を使うべき場合
 
-✅ **常に守るべきルールや情報**
+✅ **AIモデル固有の指示やディレクトリ階層での優先制御**
+
+- AIモデルごとに異なる指示を与えたい場合（CLAUDE.md, GEMINI.md）
+- ディレクトリごとに異なるルールを適用したい場合（AGENTS.md）
+- 最寄りのAGENTS.mdが優先されるため、階層的な設定が可能
+
+**配置例:**
+```
+プロジェクトリポジトリ/
+├── AGENTS.md                 ← プロジェクト全体のデフォルト設定
+├── CLAUDE.md                 ← Claude専用の指示
+├── GEMINI.md                 ← Gemini専用の指示
+├── frontend/
+│   └── AGENTS.md             ← frontend配下で優先される設定
+└── backend/
+    └── AGENTS.md             ← backend配下で優先される設定
+```
+
+### カスタム指示（リポジトリ全体）を使うべき場合
+
+✅ **常に守るべきプロジェクト共通のルールや情報**
 
 - プロジェクトの技術スタック（言語、フレームワーク、ライブラリ）
 - コーディング規約（命名規則、フォーマット）
@@ -29,6 +51,39 @@ GitHub Copilot Agentには3つの主要な設定方法があります。それ�
 
 # 命名規則
 - 関数: snake_case、クラス: PascalCase
+```
+
+### カスタム指示（パス固有）を使うべき場合
+
+✅ **特定のディレクトリやファイルタイプに適用するルール**
+
+- 特定の言語ファイルに対する規約（例: `**/*.py`, `**/*.ts`）
+- 特定のディレクトリ配下のルール（例: `src/models/**/*`）
+- フロントエンド/バックエンドで異なるルール
+
+**例:**
+```markdown
+---
+applyTo: "**/*.sh"
+---
+# シェルスクリプトのルール
+- shebangは必ず記述する
+```
+
+### カスタム指示（単一ファイル）を使うべき場合
+
+✅ **特定のファイルだけに適用する専用ルール**
+
+- 重要な設定ファイルに対する特別なルール
+- コアロジックファイルへの厳格な制約
+- 特殊なフォーマットが必要なファイル
+
+**例:**
+```markdown
+---
+applyTo: "src/utils/validation.ts"
+---
+# このファイル専用のバリデーションルール
 ```
 
 ### カスタムエージェントを使うべき場合
@@ -67,16 +122,27 @@ GitHub Copilot Agentには3つの主要な設定方法があります。それ�
 
 ```
 プロジェクトリポジトリ/
+├── AGENTS.md                              ← プロジェクト全体のデフォルト
+├── CLAUDE.md                              ← Claude専用指示
+├── GEMINI.md                              ← Gemini専用指示
 ├── .github/
-│   ├── copilot-instructions.md          ← プロジェクト共通のルール
+│   ├── copilot-instructions.md            ← プロジェクト共通のルール
+│   ├── instructions/
+│   │   ├── shell.instructions.md          ← .shファイル用ルール
+│   │   ├── typescript.instructions.md     ← .ts/.tsxファイル用ルール
+│   │   └── validation-file.instructions.md ← 特定ファイル用ルール
 │   ├── agents/
-│   │   ├── test-specialist.agent.md     ← テスト専門エージェント
-│   │   ├── api-expert.agent.md          ← API開発専門エージェント
-│   │   └── security-reviewer.agent.md   ← セキュリティレビュー担当
+│   │   ├── test-specialist.agent.md       ← テスト専門エージェント
+│   │   ├── api-expert.agent.md            ← API開発専門エージェント
+│   │   └── security-reviewer.agent.md     ← セキュリティレビュー担当
 │   └── skills/
-│       ├── ci-debugging/                ← CI障害調査手順
-│       ├── db-migration/                ← DB変更手順
-│       └── release-process/             ← リリース手順
+│       ├── ci-debugging/                  ← CI障害調査手順
+│       ├── db-migration/                  ← DB変更手順
+│       └── release-process/               ← リリース手順
+├── frontend/
+│   └── AGENTS.md                          ← frontend配下で優先される設定
+└── backend/
+    └── AGENTS.md                          ← backend配下で優先される設定
 ```
 
 ## よくある質問

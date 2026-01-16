@@ -32,13 +32,21 @@ TypeScript/React/Next.jsプロジェクト向けの基本設定です。
 
 特定のファイルタイプに対してのみ適用されるルールを定義できます。
 
-#### Python固有のルール
+#### シェルスクリプト固有のルール
 
-📄 [.github/instructions/python.instructions.md](../.github/instructions/python.instructions.md)
+📄 [.github/instructions/shell.instructions.md](../.github/instructions/shell.instructions.md)
 
 #### TypeScript固有のルール
 
 📄 [.github/instructions/typescript.instructions.md](../.github/instructions/typescript.instructions.md)
+
+### 単一ファイル固有の指示
+
+特定のファイル1つだけに適用される詳細なルールを定義できます。
+
+#### バリデーションファイルの例
+
+📄 [.github/instructions/validation-file.instructions.md](../.github/instructions/validation-file.instructions.md)
 
 ## ベストプラクティス
 
