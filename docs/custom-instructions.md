@@ -18,6 +18,12 @@
 
 複数のルールを細かく管理する場合は、`.github/instructions/` 配下に `[任意名].instructions.md` ファイルを作成し、YAMLフロントマターで適用パターンを指定します。
 
+**フロントマターのプロパティ:**
+- `applyTo`: ファイルやディレクトリのパターンを指定（glob形式）
+- `excludeAgent`: 特定のエージェントでのみ適用を制御
+  - `"code-review"`: コードレビュー時には適用しない（Coding Agentのみ）
+  - `"coding-agent"`: Coding Agent実行時には適用しない（コードレビューのみ）
+
 ## 設定例
 
 このリポジトリには実際の設定例が含まれています：
