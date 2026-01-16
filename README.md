@@ -101,13 +101,12 @@ excludeAgent: "code-review"
 
 ### エージェント
 
-**配置場所:** `AGENTS.md`（ルート）、`CLAUDE.md`、`GEMINI.md`、または任意のディレクトリ内
+**配置場所:** `AGENTS.md`（ルート）、または任意のディレクトリ内
 
 プロジェクトの概要、技術選択の理由、全体的な開発方針などを整理する場所として活用できます。
 
 **使うべき場合:**
 - プロジェクトの概要や背景をAIに理解させたい
-- AIモデルごとに異なる指示を与えたい場合（CLAUDE.md, GEMINI.md）
 - ディレクトリごとに異なるコンテキストを設定したい場合（AGENTS.md）
 - 最寄りのAGENTS.mdが優先されるため、階層的な設定が可能
 
@@ -115,8 +114,6 @@ excludeAgent: "code-review"
 ```
 プロジェクトリポジトリ/
 ├── AGENTS.md                 ← プロジェクト全体の概要・方針
-├── CLAUDE.md                 ← Claude専用の指示
-├── GEMINI.md                 ← Gemini専用の指示
 ├── frontend/
 │   └── AGENTS.md             ← フロントエンド固有の概要
 └── backend/
@@ -160,8 +157,6 @@ excludeAgent: "code-review"
 ### エージェント設定
 
 - [AGENTS.md](./AGENTS.md) - プロジェクト全体のエージェント設定（ルート）
-- [CLAUDE.md](./CLAUDE.md) - Claude専用の指示
-- [GEMINI.md](./GEMINI.md) - Gemini専用の指示
 - [frontend/AGENTS.md](./frontend/AGENTS.md) - フロントエンド配下で優先される設定
 - [backend/AGENTS.md](./backend/AGENTS.md) - バックエンド配下で優先される設定
 - [.github/agents/test-specialist.agent.md](./.github/agents/test-specialist.agent.md) - テスト専門エージェント
